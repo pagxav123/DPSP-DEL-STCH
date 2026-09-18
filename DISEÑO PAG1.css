@@ -133,3 +133,19 @@ button:hover{
     font-size:22px;
     line-height:40px;
 }
+
+.contacto{
+    margin-top:30px;
+    font-size:18px;
+    color:#333;
+}
+
+.contacto h2{
+    color:#691B31;
+    margin-bottom:10px;
+}
+
+.contacto a{
+    color:#0066cc;
+    text-decoration:none;
+}
