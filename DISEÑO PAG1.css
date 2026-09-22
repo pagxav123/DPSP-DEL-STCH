@@ -1,4 +1,66 @@
-{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:white;
+}
+
+.contenedor{
+    width:100%;
+    height:100vh;
+    display:flex;
+}
+
+.izquierda{
+    width:35%;
+    position:relative;
+    overflow:hidden;
+}
+
+.triangulo1{
+    width:730px;
+    height:730px;
+    background:#4A148C;
+    position:absolute;
+    top:35px;
+    left:-350px;
+    transform:rotate(45deg);
+}
+
+.triangulo2{
+    width:700px;
+    height:700px;
+    background:#9C27B0;
+    position:absolute;
+    top:50px;
+    left:-350px;
+    transform:rotate(45deg);
+}
+
+.logo{
+    width:390px;
+    position:absolute;
+    left:12px;
+    top:340px;
+}
+
+.derecha{
+    width:45%;
+    padding-top:40px;
+    padding-left:10px;
+}
+
+h1{
+    color:#691B31;
+    font-size:58px;
+    font-weight:bold;
+}
+
+h2{
     margin-top:25px;
     color:#691B31;
     font-size:30px;
@@ -16,23 +78,38 @@ ul li{
 ul li a{
     display:flex;
     align-items:center;
+    gap:12px;
+    width:100%;
+    max-width:650px;
     background:#A02142;
     color:white;
     padding:15px 20px;
     border-radius:12px;
+    border:2px solid #A02142;
     text-decoration:none;
     font-size:20px;
-    transition:.3s;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 5px 12px rgba(0,0,0,0.25);
 }
 
 ul li a:hover{
     background:#084DA8;
+    border-color:#084DA8;
     transform:translateX(5px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.35);
+}
+
+ul li a:active{
+    transform:scale(0.97);
 }
 
 i{
     color:white;
     width:40px;
+    text-align:center;
+    font-size:22px;
 }
 
 button{
@@ -44,6 +121,7 @@ button{
     border-radius:12px;
     font-size:22px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{
@@ -54,4 +132,20 @@ button:hover{
     margin-top:45px;
     font-size:22px;
     line-height:40px;
+}
+
+.contacto{
+    margin-top:30px;
+    font-size:18px;
+    color:#333;
+}
+
+.contacto h2{
+    color:#691B31;
+    margin-bottom:10px;
+}
+
+.contacto a{
+    color:#0066cc;
+    text-decoration:none;
 }
