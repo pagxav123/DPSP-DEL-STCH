@@ -27,7 +27,7 @@ body{
 
 
 .triangulo1{
-    width:1300px;
+    width:100px;
     height:100px;
     background:#4A148C;
     position:absolute;
@@ -38,7 +38,7 @@ body{
 
 
 .triangulo2{
-    width:720px;
+    width:1320px;
     height:720px;
     background:#9C27B0;
     position:absolute;
