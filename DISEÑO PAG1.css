@@ -7,6 +7,7 @@
 
 body{
     background:white;
+    overflow:hidden;
 }
 
 .contenedor{
@@ -15,137 +16,193 @@ body{
     display:flex;
 }
 
+
+
 .izquierda{
-    width:35%;
+    width:36%;
+    height:100vh;
     position:relative;
     overflow:hidden;
 }
 
+/* Triángulo morado oscuro */
 .triangulo1{
-    width:730px;
-    height:730px;
+    width:760px;
+    height:760px;
     background:#4A148C;
     position:absolute;
-    top:35px;
-    left:-350px;
+    top:-115px;
+    left:-300px;
     transform:rotate(45deg);
 }
 
+/* Triángulo morado claro */
 .triangulo2{
-    width:700px;
-    height:700px;
+    width:720px;
+    height:720px;
     background:#9C27B0;
     position:absolute;
-    top:50px;
-    left:-350px;
+    top:-95px;
+    left:-300px;
     transform:rotate(45deg);
 }
 
+/* Logo */
 .logo{
     width:390px;
     position:absolute;
-    left:12px;
+    left:15px;
     top:340px;
+    z-index:2;
 }
 
+
+
 .derecha{
-    width:45%;
-    padding-top:40px;
+    width:64%;
+    padding-top:48px;
     padding-left:10px;
+    padding-right:40px;
 }
+
+
+/* TÍTULO PRINCIPAL */
 
 h1{
     color:#691B31;
     font-size:58px;
+    line-height:1.08;
     font-weight:bold;
+    margin:0;
 }
 
+
+/* SUBTÍTULO */
+
 h2{
-    margin-top:25px;
-    color:#691B31;
-    font-size:30px;
+    margin-top:10px;
+    color:#333;
+    font-size:17px;
+    font-weight:normal;
 }
+
+
+
 
 ul{
     list-style:none;
     margin-top:35px;
+    padding:0;
 }
 
 ul li{
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 ul li a{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
+
     width:100%;
     max-width:650px;
+
     background:#A02142;
     color:white;
-    padding:15px 20px;
-    border-radius:12px;
+
+    padding:12px 18px;
+
+    border-radius:8px;
     border:2px solid #A02142;
+
     text-decoration:none;
-    font-size:20px;
+
+    font-size:17px;
     font-weight:bold;
+
     cursor:pointer;
+
     transition:0.3s;
-    box-shadow:0 5px 12px rgba(0,0,0,0.25);
+
+    box-shadow:0 3px 7px rgba(0,0,0,0.20);
 }
+
+
+/* ICONOS */
+
+i{
+    color:white;
+    width:25px;
+    min-width:25px;
+    text-align:center;
+    font-size:19px;
+}
+
+
+/* EFECTO AL PASAR EL MOUSE */
 
 ul li a:hover{
     background:#084DA8;
     border-color:#084DA8;
     transform:translateX(5px);
-    box-shadow:0 8px 18px rgba(0,0,0,0.35);
+    box-shadow:0 5px 12px rgba(0,0,0,0.25);
 }
+
+
+/* EFECTO AL PRESIONAR */
 
 ul li a:active{
-    transform:scale(0.97);
+    transform:scale(0.98);
 }
 
-i{
-    color:white;
-    width:40px;
-    text-align:center;
-    font-size:22px;
-}
 
-button{
-    margin-top:45px;
-    background:#A02142;
-    color:white;
-    border:none;
-    padding:18px 45px;
-    border-radius:12px;
-    font-size:22px;
-    cursor:pointer;
-    transition:0.3s;
-}
 
-button:hover{
-    background:#084DA8;
-}
 
-.contacto{
-    margin-top:45px;
-    font-size:22px;
-    line-height:40px;
-}
 
 .contacto{
     margin-top:30px;
     font-size:18px;
     color:#333;
+    line-height:30px;
 }
 
 .contacto h2{
     color:#691B31;
     margin-bottom:10px;
+    font-size:25px;
 }
 
 .contacto a{
     color:#0066cc;
     text-decoration:none;
+}
+
+
+
+
+@media (max-width:1100px){
+
+    .izquierda{
+        width:35%;
+    }
+
+    .derecha{
+        width:65%;
+        padding-left:15px;
+    }
+
+    h1{
+        font-size:48px;
+    }
+
+    ul li a{
+        max-width:600px;
+        font-size:16px;
+    }
+
+    .logo{
+        width:330px;
+        left:5px;
+        top:320px;
+    }
 }
