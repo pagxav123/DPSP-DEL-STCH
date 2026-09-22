@@ -1,110 +1,57 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Transporte Convencional de Hidalgo</title>
+{
+    margin-top:25px;
+    color:#691B31;
+    font-size:30px;
+}
 
-    <link rel="stylesheet" href="DISEÑO PAG1.css">
-</head>
+ul{
+    list-style:none;
+    margin-top:35px;
+}
 
-<body>
+ul li{
+    margin-bottom:15px;
+}
 
-<div class="contenedor">
+ul li a{
+    display:flex;
+    align-items:center;
+    background:#A02142;
+    color:white;
+    padding:15px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:20px;
+    transition:.3s;
+}
 
-    <!-- LADO IZQUIERDO -->
-    <div class="izquierda">
+ul li a:hover{
+    background:#084DA8;
+    transform:translateX(5px);
+}
 
-        <div class="triangulo1"></div>
-        <div class="triangulo2"></div>
+i{
+    color:white;
+    width:40px;
+}
 
-        <img src="logo.png" class="logo">
+button{
+    margin-top:45px;
+    background:#A02142;
+    color:white;
+    border:none;
+    padding:18px 45px;
+    border-radius:12px;
+    font-size:22px;
+    cursor:pointer;
+}
 
-    </div>
+button:hover{
+    background:#084DA8;
+}
 
-
-    <!-- LADO DERECHO -->
-    <div class="derecha">
-
-        <h1>Movilidad</h1>
-
-        <h2>Derechos y seguridad en el transporte</h2>
-
-        <ul>
-
-            <!-- MOVILIDAD Y DISCAPACIDAD -->
-            <li>
-                <a href="movilidad-discapacidad.html">
-                 
-                    Movilidad y discapacidad
-                </a>
-            </li>
-
-            <!-- MOVILIDAD PARA MUJERES -->
-            <li>
-                <a href="movilidad_mujeres.html">
-                   
-                    Movilidad para mujeres
-                </a>
-            </li>
-
-            <!-- PREVENCIÓN DEL ACOSO -->
-            <li>
-                <a href="prevencion_acoso.html">
-                    <i>🛡</i>
-                    Prevención del acoso
-                </a>
-            </li>
-
-            <!-- NO VIOLENCIA -->
-            <li>
-                <a href="no_violencia.html">
-                   
-                    No violencia
-                </a>
-            </li>
-
-            <!-- DERECHO A LA MOVILIDAD -->
-            <li>
-                <a href="derecho_movililidad.html">
-                    
-                    Derecho a la movilidad
-                </a>
-            </li>
-
-            <!-- TRATO DIGNO -->
-            <li>
-                <a href="trato_digno.html">
-               
-                    Trato digno y respeto
-                </a>
-            </li>
-
-        </ul>
-
-
-        <button onclick="location.href='index.html'">
-            INICIO
-        </button>
-
-
-        <div class="contacto">
-
-            <h2>Contacto</h2>
-
-            <p>
-                Sistema de Transporte Convencional de Hidalgo
-            </p>
-
-            <p>
-                Hidalgo, México
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
+.contacto{
+    margin-top:45px;
+    font-size:22px;
+    line-height:40px;
+}
