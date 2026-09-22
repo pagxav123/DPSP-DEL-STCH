@@ -1,208 +1,214 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:white;
-    overflow:hidden;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    overflow: hidden;
 }
 
-.contenedor{
-    width:100%;
-    height:100vh;
-    display:flex;
-}
-.triangulo1{
-    width:100px;
-    height:100px;
-    background:#4A148C;
-    position:absolute;
-    top:-400px;
-    left:-10px;
-    transform:rotate(45deg);
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
+/* =====================================
+   FIGURA MORADA
+   ===================================== */
 
-.triangulo2{
-    width:520px;
-    height:420px;
-    background:#9C27B0;
-    position:absolute;
-    top:-400px;
-    left:-90px;
-    transform:rotate(45deg);
+.figura-morada {
+    width: 760px;
+    height: 900px;
+
+    background: #9C27B0;
+
+    position: absolute;
+
+    top: -170px;
+    left: -270px;
+
+    transform: rotate(45deg);
+
+    z-index: 1;
 }
 
+/* =====================================
+   LOGOTIPOS
+   ===================================== */
 
-.izquierda{
-    width:36%;
-    height:100vh;
-    position:relative;
-    overflow:hidden;
+.logos {
+    position: absolute;
+
+    left: 90px;
+    bottom: 120px;
+
+    width: 420px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 5;
 }
 
+/* LOGO MOVILIDAD */
 
+.logo-movilidad {
+    font-size: 22px;
+    font-weight: bold;
 
+    color: #64113b;
 
-/* Logo */
-.logo{
-    width:390px;
-    position:absolute;
-    left:15px;
-    top:340px;
-    z-index:2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-
-
-.derecha{
-    width:64%;
-    padding-top:48px;
-    padding-left:10px;
-    padding-right:40px;
+.logo-movilidad span {
+    font-size: 38px;
+    color: #64113b;
 }
 
+/* LOGO HIDALGO */
 
-/* TÍTULO PRINCIPAL */
-
-h1{
-    color:#691B31;
-    font-size:58px;
-    line-height:1.08;
-    font-weight:bold;
-    margin:0;
+.logo-hidalgo img {
+    width: 75px;
+    height: auto;
 }
 
+/* =====================================
+   CONTENIDO DERECHO
+   ===================================== */
 
-/* SUBTÍTULO */
+.contenido {
+    position: absolute;
 
-h2{
-    margin-top:10px;
-    color:#333;
-    font-size:17px;
-    font-weight:normal;
+    top: 65px;
+    left: 53%;
+
+    width: 43%;
+
+    z-index: 10;
 }
 
+/* =====================================
+   TITULO
+   ===================================== */
 
+h1 {
+    color: #64113b;
 
+    font-size: 39px;
 
-ul{
-    list-style:none;
-    margin-top:35px;
-    padding:0;
+    line-height: 1.08;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
 }
 
-ul li{
-    margin-bottom:14px;
+/* =====================================
+   SUBTITULO
+   ===================================== */
+
+.subtitulo {
+    color: #555555;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
 }
 
-ul li a{
-    display:flex;
-    align-items:center;
-    gap:14px;
+/* =====================================
+   MENU
+   ===================================== */
 
-    width:100%;
-    max-width:650px;
+.menu {
+    width: 100%;
 
-    background:#A02142;
-    color:white;
+    display: flex;
+    flex-direction: column;
 
-    padding:12px 18px;
-
-    border-radius:8px;
-    border:2px solid #A02142;
-
-    text-decoration:none;
-
-    font-size:17px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:0.3s;
-
-    box-shadow:0 3px 7px rgba(0,0,0,0.20);
+    gap: 10px;
 }
 
+/* =====================================
+   BOTONES
+   ===================================== */
 
-/* ICONOS */
+.boton {
+    width: 100%;
 
-i{
-    color:white;
-    width:25px;
-    min-width:25px;
-    text-align:center;
-    font-size:19px;
+    height: 40px;
+
+    background: #A02142;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 18px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
 }
 
+.boton:hover {
+    background: #084DA8;
 
-/* EFECTO AL PASAR EL MOUSE */
-
-ul li a:hover{
-    background:#084DA8;
-    border-color:#084DA8;
-    transform:translateX(5px);
-    box-shadow:0 5px 12px rgba(0,0,0,0.25);
+    transform: translateX(5px);
 }
 
+/* =====================================
+   CONTACTO
+   ===================================== */
 
-/* EFECTO AL PRESIONAR */
+.contacto {
+    margin-top: 18px;
 
-ul li a:active{
-    transform:scale(0.98);
+    color: #555555;
+
+    font-size: 12px;
 }
 
+.contacto h2 {
+    font-size: 18px;
 
+    font-weight: normal;
 
+    color: #444444;
 
-
-.contacto{
-    margin-top:30px;
-    font-size:18px;
-    color:#333;
-    line-height:30px;
+    margin-bottom: 8px;
 }
 
-.contacto h2{
-    color:#691B31;
-    margin-bottom:10px;
-    font-size:25px;
+.contacto p {
+    margin-bottom: 4px;
 }
 
-.contacto a{
-    color:#0066cc;
-    text-decoration:none;
+/* TELEFONO */
+
+.contacto a {
+    color: #555555;
+
+    text-decoration: none;
 }
 
+.contacto a:hover {
+    color: #A02142;
 
-
-
-@media (max-width:1100px){
-
-    .izquierda{
-        width:35%;
-    }
-
-    .derecha{
-        width:65%;
-        padding-left:15px;
-    }
-
-    h1{
-        font-size:48px;
-    }
-
-    ul li a{
-        max-width:600px;
-        font-size:16px;
-    }
-
-    .logo{
-        width:330px;
-        left:5px;
-        top:320px;
-    }
+    text-decoration: underline;
 }
