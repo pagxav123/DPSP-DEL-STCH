@@ -20,7 +20,7 @@ body{
     height:100px;
     background:#4A148C;
     position:absolute;
-    top:-30px;
+    top:-400px;
     left:-10px;
     transform:rotate(45deg);
 }
