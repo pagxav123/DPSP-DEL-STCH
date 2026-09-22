@@ -21,7 +21,7 @@ body{
     background:#4A148C;
     position:absolute;
     top:-30px;
-    left:-90px;
+    left:-10px;
     transform:rotate(45deg);
 }
 
@@ -31,7 +31,7 @@ body{
     height:420px;
     background:#9C27B0;
     position:absolute;
-    top:-65px;
+    top:-10px;
     left:-90px;
     transform:rotate(45deg);
 }
