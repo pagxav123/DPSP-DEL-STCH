@@ -15,7 +15,26 @@ body{
     height:100vh;
     display:flex;
 }
+.triangulo1{
+    width:100px;
+    height:100px;
+    background:#4A148C;
+    position:absolute;
+    top:-30px;
+    left:-90px;
+    transform:rotate(45deg);
+}
 
+
+.triangulo2{
+    width:520px;
+    height:420px;
+    background:#9C27B0;
+    position:absolute;
+    top:-65px;
+    left:-90px;
+    transform:rotate(45deg);
+}
 
 
 .izquierda{
