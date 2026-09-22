@@ -25,10 +25,10 @@ body{
     overflow:hidden;
 }
 
-/* Triángulo morado oscuro */
+
 .triangulo1{
     width:760px;
-    height:760px;
+    height:780px;
     background:#4A148C;
     position:absolute;
     top:-115px;
@@ -36,7 +36,7 @@ body{
     transform:rotate(45deg);
 }
 
-/* Triángulo morado claro */
+
 .triangulo2{
     width:720px;
     height:720px;
