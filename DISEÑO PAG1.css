@@ -1,151 +1,110 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Transporte Convencional de Hidalgo</title>
 
-body{
-    background:white;
-}
+    <link rel="stylesheet" href="DISEÑO PAG1.css">
+</head>
 
-.contenedor{
-    width:100%;
-    height:100vh;
-    display:flex;
-}
+<body>
 
-.izquierda{
-    width:35%;
-    position:relative;
-    overflow:hidden;
-}
+<div class="contenedor">
 
-.triangulo1{
-    width:730px;
-    height:730px;
-    background:#4A148C;
-    position:absolute;
-    top:35px;
-    left:-350px;
-    transform:rotate(45deg);
-}
+    <!-- LADO IZQUIERDO -->
+    <div class="izquierda">
 
-.triangulo2{
-    width:700px;
-    height:700px;
-    background:#9C27B0;
-    position:absolute;
-    top:50px;
-    left:-350px;
-    transform:rotate(45deg);
-}
+        <div class="triangulo1"></div>
+        <div class="triangulo2"></div>
 
-.logo{
-    width:390px;
-    position:absolute;
-    left:12px;
-    top:340px;
-}
+        <img src="logo.png" class="logo">
 
-.derecha{
-    width:45%;
-    padding-top:40px;
-    padding-left:10px;
-}
+    </div>
 
-h1{
-    color:#691B31;
-    font-size:58px;
-    font-weight:bold;
-}
 
-h2{
-    margin-top:25px;
-    color:#691B31;
-    font-size:30px;
-}
+    <!-- LADO DERECHO -->
+    <div class="derecha">
 
-ul{
-    list-style:none;
-    margin-top:35px;
-}
+        <h1>Movilidad</h1>
 
-ul li{
-    margin-bottom:15px;
-}
+        <h2>Derechos y seguridad en el transporte</h2>
 
-ul li a{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    width:100%;
-    max-width:650px;
-    background:#A02142;
-    color:white;
-    padding:15px 20px;
-    border-radius:12px;
-    border:2px solid #A02142;
-    text-decoration:none;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 5px 12px rgba(0,0,0,0.25);
-}
+        <ul>
 
-ul li a:hover{
-    background:#084DA8;
-    border-color:#084DA8;
-    transform:translateX(5px);
-    box-shadow:0 8px 18px rgba(0,0,0,0.35);
-}
+            <!-- MOVILIDAD Y DISCAPACIDAD -->
+            <li>
+                <a href="movilidad-discapacidad.html">
+                 
+                    Movilidad y discapacidad
+                </a>
+            </li>
 
-ul li a:active{
-    transform:scale(0.97);
-}
+            <!-- MOVILIDAD PARA MUJERES -->
+            <li>
+                <a href="movilidad_mujeres.html">
+                   
+                    Movilidad para mujeres
+                </a>
+            </li>
 
-i{
-    color:white;
-    width:40px;
-    text-align:center;
-    font-size:22px;
-}
+            <!-- PREVENCIÓN DEL ACOSO -->
+            <li>
+                <a href="prevencion_acoso.html">
+                    <i>🛡</i>
+                    Prevención del acoso
+                </a>
+            </li>
 
-button{
-    margin-top:45px;
-    background:#A02142;
-    color:white;
-    border:none;
-    padding:18px 45px;
-    border-radius:12px;
-    font-size:22px;
-    cursor:pointer;
-    transition:0.3s;
-}
+            <!-- NO VIOLENCIA -->
+            <li>
+                <a href="no_violencia.html">
+                   
+                    No violencia
+                </a>
+            </li>
 
-button:hover{
-    background:#084DA8;
-}
+            <!-- DERECHO A LA MOVILIDAD -->
+            <li>
+                <a href="derecho_movililidad.html">
+                    
+                    Derecho a la movilidad
+                </a>
+            </li>
 
-.contacto{
-    margin-top:45px;
-    font-size:22px;
-    line-height:40px;
-}
+            <!-- TRATO DIGNO -->
+            <li>
+                <a href="trato_digno.html">
+               
+                    Trato digno y respeto
+                </a>
+            </li>
 
-.contacto{
-    margin-top:30px;
-    font-size:18px;
-    color:#333;
-}
+        </ul>
 
-.contacto h2{
-    color:#691B31;
-    margin-bottom:10px;
-}
 
-.contacto a{
-    color:#0066cc;
-    text-decoration:none;
-}
+        <button onclick="location.href='index.html'">
+            INICIO
+        </button>
+
+
+        <div class="contacto">
+
+            <h2>Contacto</h2>
+
+            <p>
+                Sistema de Transporte Convencional de Hidalgo
+            </p>
+
+            <p>
+                Hidalgo, México
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
