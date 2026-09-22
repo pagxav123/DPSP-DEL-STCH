@@ -28,11 +28,11 @@ body{
 
 .triangulo1{
     width:760px;
-    height:600px;
+    height:700px;
     background:#4A148C;
     position:absolute;
-    top:-115px;
-    left:-400px;
+    top:-155px;
+    left:-300px;
     transform:rotate(45deg);
 }
 
