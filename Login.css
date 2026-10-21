@@ -1,3 +1,5 @@
+```css
+/* CONFIGURACIÓN GENERAL */
 * {
     margin: 0;
     padding: 0;
@@ -8,22 +10,27 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Fondo de la página */
+/* FONDO DE LA PÁGINA */
 .fondo {
     min-height: 100vh;
     background-image:
-        linear-gradient(rgba(5, 28, 60, 0.55),
-                        rgba(5, 28, 60, 0.55)),
+        linear-gradient(
+            rgba(65, 0, 30, 0.55),
+            rgba(65, 0, 30, 0.55)
+        ),
         url("fondo-transporte.jpg");
+
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-/* Contenedor del login */
+/* CONTENEDOR DEL LOGIN */
 .login-container {
     background-color: rgba(255, 255, 255, 0.96);
     width: 100%;
@@ -34,7 +41,7 @@ body {
     text-align: center;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
     width: 85px;
     height: 85px;
@@ -42,8 +49,9 @@ body {
     margin-bottom: 10px;
 }
 
+/* ENCABEZADO STCH */
 .logo-seccion h1 {
-    color: #0647A1;
+    color: #7A003C;
     font-size: 32px;
 }
 
@@ -54,13 +62,13 @@ body {
     line-height: 1.5;
 }
 
-/* Formulario */
+/* FORMULARIO */
 .formulario {
     margin-top: 25px;
 }
 
 .formulario h2 {
-    color: #173B70;
+    color: #7A003C;
     margin-bottom: 22px;
 }
 
@@ -79,21 +87,24 @@ body {
 .grupo input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #d6c7ce;
     border-radius: 6px;
     font-size: 15px;
     outline: none;
+    transition: 0.3s;
 }
 
+/* EFECTO AL SELECCIONAR UN CAMPO */
 .grupo input:focus {
-    border-color: #0647A1;
+    border-color: #7A003C;
+    box-shadow: 0 0 4px rgba(122, 0, 60, 0.25);
 }
 
-/* Botón de entrada */
+/* BOTÓN DE ENTRADA */
 button {
     width: 100%;
     padding: 13px;
-    background-color: #0647A1;
+    background-color: #7A003C;
     color: white;
     border: none;
     border-radius: 6px;
@@ -103,25 +114,37 @@ button {
     transition: 0.3s;
 }
 
+/* EFECTO AL PASAR EL CURSOR */
 button:hover {
-    background-color: #032F70;
+    background-color: #5A002D;
 }
 
-/* Mensaje de error o resultado */
+/* MENSAJE DE ERROR O RESULTADO */
 #mensaje {
     margin-top: 15px;
     font-size: 14px;
 }
 
+/* TEXTO INFERIOR */
 .pie-login {
     color: #555;
     font-size: 12px;
     margin-top: 20px;
 }
 
-/* Adaptación para celulares */
+/* ADAPTACIÓN PARA CELULARES */
 @media (max-width: 480px) {
     .login-container {
         padding: 24px 20px;
     }
+
+    .logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    .logo-seccion h1 {
+        font-size: 28px;
+    }
 }
+```
