@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STCH - Iniciar sesión</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
 
+    <div class="fondo">
+        <div class="login-container">
+
+            <div class="logo-seccion">
+                <img src="logo.png" alt="Logo STCH" class="logo">
+
+                <h1>STCH</h1>
+                <p>Sistema de Transporte Convencional de Hidalgo</p>
+            </div>
+
+            <div class="formulario">
+                <h2>Iniciar sesión</h2>
+
+                <form id="formularioLogin">
+
+                    <div class="grupo">
+                        <label for="usuario">Usuario</label>
+                        <input type="text" id="usuario"
+                               placeholder="Ingresa tu usuario" required>
+                    </div>
+
+                    <div class="grupo">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" id="contrasena"
+                               placeholder="Ingresa tu contraseña" required>
+                    </div>
+
+                    <button type="submit">Entrar</button>
+
+                    <p id="mensaje"></p>
+
+                </form>
+            </div>
+
+            <p class="pie-login">Acceso al sistema de movilidad</p>
+
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+</html>
