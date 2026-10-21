@@ -43,8 +43,8 @@ body {
 
 /* LOGO */
 .logo img {
-    width: 100%;
-    max-width: 200px;
+    width: 300px;
+    max-width: 200%;
     height: auto;
     display: block;
 }
