@@ -42,11 +42,11 @@ body {
 }
 
 /* LOGO */
-.logo {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    margin-bottom: 15px;
+.logo img {
+    width: 180px;
+    max-width: 180%;
+    height: auto;
+    display: block;
 }
 
 /* ENCABEZADO STCH */
