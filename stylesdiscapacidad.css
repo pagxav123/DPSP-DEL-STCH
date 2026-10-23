@@ -1,0 +1,119 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+color:#333;
+}
+
+header{
+background:#ffffff;
+padding:15px 8%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.logo{
+height:70px;
+}
+
+.banner{
+height:350px;
+background:linear-gradient(rgba(90,0,35,.75),rgba(90,0,35,.75)),url("transporte.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.banner h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.banner p{
+font-size:22px;
+}
+
+.contenido{
+max-width:1100px;
+margin:auto;
+padding:50px 30px;
+}
+
+.tarjeta{
+background:white;
+padding:35px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.tarjeta h2{
+color:#6b1035;
+margin-bottom:20px;
+}
+
+.tarjeta p{
+line-height:1.8;
+text-align:justify;
+margin-bottom:18px;
+}
+
+ul{
+margin-left:25px;
+line-height:2;
+}
+
+.boton{
+margin-top:30px;
+display:inline-block;
+padding:15px 35px;
+background:#7a123f;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.boton:hover{
+background:#530827;
+}
+
+footer{
+background:#6b1035;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+
+.banner{
+height:250px;
+}
+
+.banner h1{
+font-size:32px;
+}
+
+.banner p{
+font-size:18px;
+}
+
+.logo{
+height:55px;
+}
+
+}
