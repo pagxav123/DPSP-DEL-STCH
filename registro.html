@@ -1,1 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - STCH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="registro-container">
+
+        <img src="logo.png" alt="Logo STCH" class="logo">
+
+        <h2>Crear una cuenta</h2>
+        <p>Regístrate para acceder al sistema</p>
+
+        <form id="formRegistro">
+
+            <input type="text" id="nombre"
+                placeholder="Nombre" required>
+
+            <input type="text" id="apellido"
+                placeholder="Apellido" required>
+
+            <input type="email" id="correo"
+                placeholder="Correo electrónico" required>
+
+            <input type="password" id="contraseña"
+                placeholder="Contraseña" required>
+
+            <input type="password" id="confirmar"
+                placeholder="Confirmar contraseña" required>
+
+            <button type="submit">Crear cuenta</button>
+
+        </form>
+
+        <div class="registro-link">
+            <p>¿Ya tienes una cuenta?</p>
+            <a href="index.html">Iniciar sesión</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("formRegistro").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let contraseña = document.getElementById("contraseña").value;
+            let confirmar = document.getElementById("confirmar").value;
+
+            if (contraseña !== confirmar) {
+                alert("Las contraseñas no coinciden");
+                return;
+            }
+
+            alert("Registro completado correctamente");
+
+        });
+    </script>
+
+</body>
+</html>
+
