@@ -710,5 +710,25 @@ footer button:hover{
     .quienes-eslogan h2{
         font-size:22px;
     }
+   .registro-link {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+.registro-link p {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.registro-link a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.registro-link a:hover {
+    text-decoration: underline;
+}
 
 }
