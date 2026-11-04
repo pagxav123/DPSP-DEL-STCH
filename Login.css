@@ -132,4 +132,30 @@ button:hover{
     .logo-seccion123 h1{
         font-size:28px;
     }
+    
+.registro-link {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.registro-link p {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.registro-link a {
+    display: inline-block;
+    color: #164b79;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.registro-link a:hover {
+    text-decoration: underline;
+}
+
 }
