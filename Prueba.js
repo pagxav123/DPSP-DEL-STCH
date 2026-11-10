@@ -1,5 +1,5 @@
 
-import { supabase } from "./conexion.js";
+import { supabase } from "./Conexión.js";
 
 // Comprobar conexión con Supabase
 async function probarConexion() {
