@@ -70,10 +70,14 @@ formulario.addEventListener("submit", async function(event) {
 
     } catch (error) {
 
-        mensaje.style.color = "red";
-        mensaje.textContent = "Error al registrar: " + error.message;
+    mensaje.style.color = "red";
 
-        console.error("Error de registro:", error);
+    mensaje.textContent =
+        "Error: " + error.message +
+        " | Código: " + (error.code || "Sin código") +
+        " | Estado: " + (error.status || "Sin estado");
+
+    console.error("Error completo:", error);
 
     } finally {
 
