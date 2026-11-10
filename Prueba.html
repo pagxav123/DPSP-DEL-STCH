@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de conexión STCH</title>
+</head>
+<body>
+
+    <h1>Conexión STCH - Supabase</h1>
+
+    <p id="estado">Comprobando conexión...</p>
+
+    <button onclick="probarConexion()">
+        Comprobar nuevamente
+    </button>
+
+    <script type="module">
+        import { supabase } from "./conexion.js";
+
+        window.probarConexion = async function() {
+
+            const estado = document.getElementById("estado");
+
+            estado.textContent = "Comprobando...";
+
+            try {
+                const { error } = await supabase.auth.getSession();
+
+                if (error) {
+                    estado.textContent =
+                        "Error: " + error.message;
+                } else {
+                    estado.textContent =
+                        "¡Conexión con Supabase correcta!";
+                }
+
+            } catch (error) {
+                estado.textContent =
+                    "No se pudo conectar: " + error.message;
+            }
+        };
+
+        probarConexion();
+    </script>
+
+</body>
+</html>
