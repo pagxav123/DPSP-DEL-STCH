@@ -1,68 +1,72 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - STCH</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>STCH - Crear cuenta</title>
+    <link rel="stylesheet" href="Registro.css">
 </head>
-
 <body>
 
-    <div class="registro-container">
+    <main class="contenedor">
 
-        <img src="logo.png" alt="Logo STCH" class="logo">
+        <section class="encabezado">
+            <img src="logo.png" alt="Logo STCH">
+            <h1>STCH</h1>
+            <p>Sistema de Transporte Convencional de Hidalgo</p>
+        </section>
 
-        <h2>Crear una cuenta</h2>
-        <p>Regístrate para acceder al sistema</p>
+        <section class="formulario">
+            <h2>Crear cuenta</h2>
+            <p class="descripcion">Regístrate para acceder al sistema.</p>
 
-        <form id="formRegistro">
+            <form id="formularioRegistro">
 
-            <input type="text" id="nombre"
-                placeholder="Nombre" required>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" maxlength="30"
+                    placeholder="Ingresa tu nombre" required>
 
-            <input type="text" id="apellido"
-                placeholder="Apellido" required>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" maxlength="30"
+                    placeholder="Ingresa tus apellidos" required>
 
-            <input type="email" id="correo"
-                placeholder="Correo electrónico" required>
+                <label for="usuario">Nombre de usuario</label>
+                <input type="text" id="usuario" maxlength="30"
+                    placeholder="Crea tu usuario" required>
 
-            <input type="password" id="contraseña"
-                placeholder="Contraseña" required>
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" maxlength="50"
+                    placeholder="Ingresa tu correo" required>
 
-            <input type="password" id="confirmar"
-                placeholder="Confirmar contraseña" required>
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena"
+                    placeholder="Crea una contraseña" minlength="6" required>
 
-            <button type="submit">Crear cuenta</button>
+                <label for="confirmar">Confirmar contraseña</label>
+                <input type="password" id="confirmar"
+                    placeholder="Repite tu contraseña" minlength="6" required>
 
-        </form>
+                <button type="submit" id="botonRegistro">
+                    Crear cuenta
+                </button>
 
-        <div class="registro-link">
-            <p>¿Ya tienes una cuenta?</p>
-            <a href="index.html">Iniciar sesión</a>
-        </div>
+                <p id="mensaje" role="status"></p>
 
-    </div>
+                <div class="enlace">
+                    ¿Ya tienes una cuenta?
+                    <a href="Login.html">Inicia sesión</a>
+                </div>
 
-    <script>
-        document.getElementById("formRegistro").addEventListener("submit", function(event) {
+            </form>
+        </section>
 
-            event.preventDefault();
+        <p class="pie">Acceso al sistema de movilidad</p>
 
-            let contraseña = document.getElementById("contraseña").value;
-            let confirmar = document.getElementById("confirmar").value;
+    </main>
 
-            if (contraseña !== confirmar) {
-                alert("Las contraseñas no coinciden");
-                return;
-            }
-
-            alert("Registro completado correctamente");
-
-        });
-    </script>
+    <script type="module" src="Registro.js"></script>
 
 </body>
 </html>
-
