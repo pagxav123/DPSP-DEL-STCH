@@ -1,1 +1,287 @@
 
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STCH - Consulta de rutas</title>
+
+    <link rel="stylesheet" href="rutas.css">
+
+    <script src="rutas.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo STCH">
+            </a>
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="rutas.html" class="activo">Buscar rutas</a>
+            <a href="index.html#temas">Información</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+
+    </header>
+
+
+    <!-- PORTADA -->
+
+    <section class="portada">
+
+        <div class="portada-contenido">
+
+            <p class="etiqueta">MOVILIDAD EN HIDALGO</p>
+
+            <h1>
+                Encuentra tu ruta
+                de transporte
+            </h1>
+
+            <p>
+                Consulta las rutas de combis disponibles
+                y encuentra una opción para llegar
+                a tu destino.
+            </p>
+
+            <a href="#buscador" class="boton-portada">
+                Comenzar búsqueda ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- BUSCADOR -->
+
+    <main>
+
+        <section class="buscador" id="buscador">
+
+            <div class="titulo-seccion">
+
+                <p>PLANEA TU RECORRIDO</p>
+
+                <h2>¿A dónde quieres llegar?</h2>
+
+                <span>
+                    Selecciona tu punto de partida y destino.
+                </span>
+
+            </div>
+
+
+            <form id="formularioRutas">
+
+                <div class="campos">
+
+                    <div class="campo">
+
+                        <label for="origen">
+                            📍 Punto de partida
+                        </label>
+
+                        <select id="origen" required>
+
+                            <option value="">
+                                Selecciona tu origen
+                            </option>
+
+                            <option value="centro">
+                                Centro de Pachuca
+                            </option>
+
+                            <option value="central">
+                                Central de Autobuses
+                            </option>
+
+                            <option value="plaza">
+                                Plaza Juárez
+                            </option>
+
+                            <option value="plateada">
+                                Zona Plateada
+                            </option>
+
+                            <option value="hospital">
+                                Hospital General
+                            </option>
+
+                            <option value="san-javier">
+                                San Javier
+                            </option>
+
+                            <option value="mercado">
+                                Mercado Benito Juárez
+                            </option>
+
+                            <option value="parque">
+                                Parque David Ben Gurión
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="destino">
+                            🏁 Punto de destino
+                        </label>
+
+                        <select id="destino" required>
+
+                            <option value="">
+                                Selecciona tu destino
+                            </option>
+
+                            <option value="centro">
+                                Centro de Pachuca
+                            </option>
+
+                            <option value="central">
+                                Central de Autobuses
+                            </option>
+
+                            <option value="plaza">
+                                Plaza Juárez
+                            </option>
+
+                            <option value="plateada">
+                                Zona Plateada
+                            </option>
+
+                            <option value="hospital">
+                                Hospital General
+                            </option>
+
+                            <option value="san-javier">
+                                San Javier
+                            </option>
+
+                            <option value="mercado">
+                                Mercado Benito Juárez
+                            </option>
+
+                            <option value="parque">
+                                Parque David Ben Gurión
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="boton-buscar">
+                    Buscar transporte →
+                </button>
+
+            </form>
+
+            <p class="aviso-demo">
+                ⚠ Sistema de demostración: los recorridos mostrados
+                no representan rutas oficiales.
+            </p>
+
+        </section>
+
+
+        <!-- RESULTADOS -->
+
+        <section class="resultados" id="resultados" hidden>
+
+            <div class="titulo-seccion">
+
+                <p>RESULTADOS DE BÚSQUEDA</p>
+
+                <h2>Opciones de transporte</h2>
+
+                <span id="resumenBusqueda"></span>
+
+            </div>
+
+            <div id="listaResultados"></div>
+
+        </section>
+
+
+        <!-- RUTAS DISPONIBLES -->
+
+        <section class="rutas-disponibles">
+
+            <div class="titulo-seccion">
+
+                <p>TRANSPORTE</p>
+
+                <h2>Rutas disponibles</h2>
+
+                <span>
+                    Conoce los recorridos incluidos
+                    en nuestra demostración.
+                </span>
+
+            </div>
+
+            <div class="contenedor-rutas" id="catalogoRutas"></div>
+
+        </section>
+
+
+        <!-- INFORMACIÓN -->
+
+        <section class="informacion-rutas">
+
+            <div class="informacion-texto">
+
+                <p>STCH</p>
+
+                <h2>Movilidad más sencilla</h2>
+
+                <span>
+                    Nuestro objetivo es facilitar la consulta
+                    de recorridos y ayudar a las personas
+                    a planear sus traslados.
+                </span>
+
+            </div>
+
+            <div class="informacion-icono">
+                🚌
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <p>
+            © 2026 Sistema de Transporte Convencional de Hidalgo
+        </p>
+
+        <p>
+            Movilidad
+        </p>
+
+    </footer>
+
+</body>
+</html>
+
