@@ -383,8 +383,6 @@ function buscarRutasDirectas(puntoInicial, puntoFinal) {
 
         }
 
-    });
-
     return resultadosDirectos;
 
 }
