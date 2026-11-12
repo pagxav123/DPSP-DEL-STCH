@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html {
@@ -11,41 +11,36 @@ html {
 }
 
 body {
-    background: #f4f4f6;
+    background: #f5f5f5;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* Encabezado */
 header {
-    width: 100%;
     background: #ffffff;
-    padding: 15px 8%;
+    padding: 18px 8%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    position: relative;
-    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 .logo {
     height: 75px;
-    width: auto;
     object-fit: contain;
 }
 
 /* Navegación */
 nav {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: #6b1035;
     text-decoration: none;
-    font-size: 15px;
     font-weight: bold;
     transition: 0.3s;
 }
@@ -54,13 +49,13 @@ nav a:hover {
     color: #a52a55;
 }
 
-/* Banner principal */
+/* Banner */
 .banner {
-    min-height: 420px;
+    min-height: 380px;
     background:
         linear-gradient(
-            rgba(75, 5, 35, 0.78),
-            rgba(75, 5, 35, 0.78)
+            rgba(90,0,35,0.78),
+            rgba(90,0,35,0.78)
         ),
         url("transporte.jpg");
 
@@ -71,91 +66,124 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     color: white;
-    padding: 50px 20px;
-}
-
-.banner div {
-    max-width: 850px;
+    padding: 40px 20px;
 }
 
 .banner h1 {
-    font-size: 48px;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    font-weight: 800;
+    font-size: 44px;
+    margin-bottom: 18px;
 }
 
 .banner p {
-    font-size: 20px;
-    margin-bottom: 30px;
+    font-size: 19px;
+    max-width: 800px;
+    margin: auto;
 }
 
-/* Botón principal */
-.boton {
-    display: inline-block;
-    padding: 14px 35px;
-    background: #ffffff;
-    color: #6b1035;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-    border: 2px solid white;
-}
-
-.boton:hover {
-    background: transparent;
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* Contenido principal */
+/* Contenedor principal */
 .contenido {
     max-width: 1150px;
     margin: auto;
-    padding: 65px 25px;
+    padding: 60px 25px;
+}
+
+/* Títulos */
+.titulo {
+    color: #6b1035;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
 }
 
 /* Tarjetas */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
 .tarjeta {
     background: white;
-    padding: 45px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    border-top: 5px solid #6b1035;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-bottom: 5px solid #6b1035;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.13);
 }
 
 .tarjeta h2 {
     color: #6b1035;
-    font-size: 30px;
-    margin-bottom: 22px;
+    margin-bottom: 15px;
+    font-size: 23px;
 }
 
 .tarjeta p {
-    line-height: 1.9;
-    text-align: justify;
-    margin-bottom: 18px;
     color: #555;
-    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 12px;
+}
+
+/* Imágenes */
+.imagen {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 18px;
 }
 
 /* Listas */
 ul {
     margin-left: 25px;
-    line-height: 2.2;
-    color: #555;
+    line-height: 2;
 }
 
 li::marker {
-    color: #8b1745;
+    color: #6b1035;
 }
 
-/* Sección de información */
-.seccion-titulo {
-    text-align: center;
+/* Información destacada */
+.destacado {
+    background: #ffffff;
+    border-left: 7px solid #6b1035;
+    padding: 35px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.destacado h2 {
     color: #6b1035;
-    font-size: 32px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    background: #6b1035;
+    color: white;
+    padding: 13px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: #4d0925;
+    transform: translateY(-3px);
 }
 
 /* Pie de página */
@@ -169,15 +197,23 @@ footer {
 
 footer p {
     font-size: 14px;
+    margin: 5px;
+}
+
+/* Accesibilidad */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #6b1035;
+    outline-offset: 4px;
 }
 
 /* Adaptación a celulares */
 @media (max-width: 768px) {
 
     header {
-        padding: 15px 5%;
         flex-direction: column;
         gap: 15px;
+        padding: 15px;
     }
 
     .logo {
@@ -186,55 +222,45 @@ footer p {
 
     nav {
         justify-content: center;
-        flex-wrap: wrap;
         gap: 15px;
     }
 
-    nav a {
-        font-size: 13px;
-    }
-
     .banner {
-        min-height: 300px;
+        min-height: 280px;
     }
 
     .banner h1 {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .banner p {
         font-size: 16px;
     }
 
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
     .contenido {
-        padding: 35px 15px;
+        padding: 35px 18px;
     }
 
-    .tarjeta {
-        padding: 25px 20px;
-    }
-
-    .tarjeta h2 {
-        font-size: 24px;
-    }
-
-    .seccion-titulo {
+    .titulo {
         font-size: 26px;
+    }
+
+    .destacado {
+        padding: 23px;
     }
 }
 
-/* Pantallas pequeñas */
 @media (max-width: 400px) {
 
+    nav a {
+        font-size: 13px;
+    }
+
     .banner h1 {
-        font-size: 27px;
-    }
-
-    .boton {
-        padding: 12px 25px;
-    }
-
-    nav {
-        gap: 10px;
+        font-size: 25px;
     }
 }
