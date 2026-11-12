@@ -700,6 +700,9 @@ formulario.addEventListener("submit", function(event) {
 
         });
 
+       // Mostrar el mapa de la ruta directa.
+mostrarMapaDirecto(directas[0].recorrido);
+
     } else {
 
         // Si no hay rutas directas,
@@ -726,6 +729,9 @@ formulario.addEventListener("submit", function(event) {
                     crearTarjetaTransbordo(resultado);
 
             });
+
+           // Mostrar el mapa del primer transbordo.
+mostrarMapaTransbordo(transbordos[0]);
 
         } else {
 
@@ -759,11 +765,21 @@ formulario.addEventListener("submit", function(event) {
 
     // Mostrar sección de resultados.
 
-    resultados.hidden = false;
+    // Mostrar sección de resultados.
 
-    resultados.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+resultados.hidden = false;
+
+// Actualizar el tamaño del mapa cuando ya sea visible.
+if (mapa !== null) {
+    setTimeout(function() {
+        mapa.invalidateSize();
+    }, 200);
+}
+
+resultados.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+});
     });
 
 });
