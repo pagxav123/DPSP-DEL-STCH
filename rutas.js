@@ -108,6 +108,196 @@ const coordenadas = {
 };
 
 
+/* =================================
+   CONFIGURAR MAPA
+================================= */
+
+let mapa = null;
+
+let capasMapa = [];
+
+
+function iniciarMapa() {
+
+    if (mapa !== null) {
+        return;
+    }
+
+    mapa = L.map("mapa").setView(
+        [20.115, -98.745],
+        13
+    );
+
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }
+    ).addTo(mapa);
+
+}
+
+
+/* =================================
+   LIMPIAR MAPA
+================================= */
+
+function limpiarMapa() {
+
+    capasMapa.forEach(function(capa) {
+
+        mapa.removeLayer(capa);
+
+    });
+
+    capasMapa = [];
+
+}
+
+
+/* =================================
+   DIBUJAR MARCADORES
+================================= */
+
+function agregarMarcador(parada, tipo) {
+
+    const posicion = coordenadas[parada];
+
+    let titulo = nombresParadas[parada];
+
+    if (tipo === "inicio") {
+        titulo = "ORIGEN: " + titulo;
+    }
+
+    if (tipo === "destino") {
+        titulo = "DESTINO: " + titulo;
+    }
+
+    if (tipo === "transbordo") {
+        titulo = "TRANSBORDO: " + titulo;
+    }
+
+    const marcador = L.marker(posicion)
+        .addTo(mapa)
+        .bindPopup(titulo);
+
+    capasMapa.push(marcador);
+
+}
+
+
+/* =================================
+   DIBUJAR RECORRIDO
+================================= */
+
+function dibujarTramo(paradas, color) {
+
+    const puntos = paradas.map(function(parada) {
+
+        return coordenadas[parada];
+
+    });
+
+    const linea = L.polyline(
+        puntos,
+        {
+            color: color,
+            weight: 6,
+            opacity: 0.85
+        }
+    ).addTo(mapa);
+
+    capasMapa.push(linea);
+
+    return puntos;
+
+}
+
+
+/* =================================
+   MOSTRAR RUTA DIRECTA EN MAPA
+================================= */
+
+function mostrarMapaDirecto(paradas) {
+
+    iniciarMapa();
+
+    limpiarMapa();
+
+    const puntos = dibujarTramo(
+        paradas,
+        "#8b1739"
+    );
+
+    agregarMarcador(paradas[0], "inicio");
+
+    agregarMarcador(
+        paradas[paradas.length - 1],
+        "destino"
+    );
+
+    mapa.fitBounds(puntos, {
+        padding: [40, 40]
+    });
+
+    mapa.invalidateSize();
+
+}
+
+
+/* =================================
+   MOSTRAR TRANSBORDO EN MAPA
+================================= */
+
+function mostrarMapaTransbordo(resultado) {
+
+    iniciarMapa();
+
+    limpiarMapa();
+
+    const puntosPrimera = dibujarTramo(
+        resultado.primerTramo,
+        "#8b1739"
+    );
+
+    const puntosSegunda = dibujarTramo(
+        resultado.segundoTramo,
+        "#2368a0"
+    );
+
+    agregarMarcador(
+        resultado.primerTramo[0],
+        "inicio"
+    );
+
+    agregarMarcador(
+        resultado.transbordo,
+        "transbordo"
+    );
+
+    agregarMarcador(
+        resultado.segundoTramo[
+            resultado.segundoTramo.length - 1
+        ],
+        "destino"
+    );
+
+    const todosLosPuntos = [
+        ...puntosPrimera,
+        ...puntosSegunda
+    ];
+
+    mapa.fitBounds(todosLosPuntos, {
+        padding: [40, 40]
+    });
+
+    mapa.invalidateSize();
+
+}
+
+
+
 
 /* =================================
    ELEMENTOS HTML
