@@ -673,10 +673,34 @@ formulario.addEventListener("submit", function(event) {
 
     // Buscar recorridos directos.
 
-    const directas = buscarRutasDirectas(
-        puntoInicial,
-        puntoFinal
-    );
+   
+function buscarRutasDirectas(puntoInicial, puntoFinal) {
+
+    const resultadosDirectos = [];
+
+    rutas.forEach(function(ruta) {
+
+        const recorrido = obtenerTramo(
+            ruta,
+            puntoInicial,
+            puntoFinal
+        );
+
+        if (recorrido) {
+
+            resultadosDirectos.push({
+                ruta: ruta,
+                recorrido: recorrido
+            });
+
+        }
+
+    });
+
+    return resultadosDirectos;
+
+}
+
 
 
     // Limpiar resultados anteriores.
@@ -774,13 +798,14 @@ if (mapa !== null) {
     }, 200);
 }
 
+
 resultados.scrollIntoView({
     behavior: "smooth",
     block: "start"
 });
-    });
 
 });
+
 
 
 /* =================================
