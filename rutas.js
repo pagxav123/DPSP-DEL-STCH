@@ -672,8 +672,12 @@ formulario.addEventListener("submit", function(event) {
 
 
     // Buscar recorridos directos.
+   const directas = buscarRutasDirectas(
+    puntoInicial,
+    puntoFinal
+);
 
-   
+       
 function buscarRutasDirectas(puntoInicial, puntoFinal) {
 
     const resultadosDirectos = [];
@@ -700,6 +704,7 @@ function buscarRutasDirectas(puntoInicial, puntoFinal) {
     return resultadosDirectos;
 
 }
+
 
 
 
