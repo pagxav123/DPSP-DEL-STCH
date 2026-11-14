@@ -383,9 +383,12 @@ function buscarRutasDirectas(puntoInicial, puntoFinal) {
 
         }
 
+    });
+
     return resultadosDirectos;
 
 }
+
 
 
 /* =================================
@@ -678,34 +681,6 @@ formulario.addEventListener("submit", function(event) {
 );
 
        
-function buscarRutasDirectas(puntoInicial, puntoFinal) {
-
-    const resultadosDirectos = [];
-
-    rutas.forEach(function(ruta) {
-
-        const recorrido = obtenerTramo(
-            ruta,
-            puntoInicial,
-            puntoFinal
-        );
-
-        if (recorrido) {
-
-            resultadosDirectos.push({
-                ruta: ruta,
-                recorrido: recorrido
-            });
-
-        }
-
-    });
-
-    return resultadosDirectos;
-
-}
-
-
 
 
     // Limpiar resultados anteriores.
