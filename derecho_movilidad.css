@@ -1,1 +1,398 @@
 
+/* CONFIGURACION GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F7F5F5;
+    color: #333333;
+    line-height: 1.7;
+}
+
+/* ENCABEZADO */
+header {
+    background: #6B1E32;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.logo h2 {
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #E9BFC8;
+}
+
+/* PORTADA PRINCIPAL */
+.inicio {
+    min-height: 480px;
+    background: linear-gradient(120deg, #451321, #6B1E32, #A52A45);
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    color: white;
+}
+
+.contenido-inicio {
+    max-width: 760px;
+}
+
+.contenido-inicio h1 {
+    font-size: 45px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.contenido-inicio p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #F6EDEF;
+}
+
+.boton {
+    display: inline-block;
+    background: white;
+    color: #6B1E32;
+    padding: 14px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background: #E9BFC8;
+    transform: translateY(-4px);
+}
+
+/* TITULOS GENERALES */
+.introduccion h2,
+.tipos h2,
+.prevencion h2,
+.transporte h2,
+.ayuda h2 {
+    color: #6B1E32;
+    font-size: 30px;
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* INTRODUCCION */
+.introduccion {
+    padding: 75px 10%;
+    background: white;
+    text-align: center;
+}
+
+.introduccion p {
+    max-width: 1050px;
+    margin: 15px auto;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #555;
+}
+
+/* SECCION DE DERECHOS */
+.tipos {
+    padding: 75px 8%;
+    background: #F7F5F5;
+    text-align: center;
+}
+
+.descripcion {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    color: #666;
+    font-size: 16px;
+}
+
+.contenedor-tipos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 32px 26px;
+    border-radius: 9px;
+    border-bottom: 5px solid #A52A45;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    text-align: left;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 22px rgba(107,30,50,0.15);
+}
+
+.tarjeta h3 {
+    color: #8A263D;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.tarjeta p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ACCESIBILIDAD Y PREVENCION */
+.prevencion {
+    background: #F0E5E7;
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.prevencion > p {
+    max-width: 950px;
+    margin: 15px auto 30px;
+    color: #555;
+    line-height: 1.9;
+}
+
+.lista-prevencion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.consejo {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid #A52A45;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.consejo:hover {
+    transform: translateY(-5px);
+}
+
+.consejo h3 {
+    color: #6B1E32;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.consejo p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* TRANSPORTE Y OBLIGACIONES */
+.transporte {
+    padding: 75px 9%;
+    background: white;
+}
+
+.transporte > p {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    text-align: center;
+    color: #555;
+    line-height: 1.9;
+}
+
+.transporte-contenido {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.transporte-contenido div {
+    background: #F7F1F2;
+    padding: 30px;
+    border-radius: 8px;
+    border-top: 4px solid #8A263D;
+    transition: 0.3s;
+}
+
+.transporte-contenido div:hover {
+    background: #F0E5E7;
+    transform: translateY(-4px);
+}
+
+.transporte-contenido h3 {
+    color: #6B1E32;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.transporte-contenido p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.transporte-contenido ul {
+    padding-left: 22px;
+}
+
+.transporte-contenido li {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 15px;
+}
+
+/* MENSAJE FINAL */
+.mensaje-final {
+    background: linear-gradient(120deg, #6B1E32, #8A263D);
+    color: white;
+    padding: 75px 10%;
+    text-align: center;
+}
+
+.mensaje-final h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.mensaje-final p {
+    max-width: 900px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #F6EDEF;
+}
+
+/* PIE DE PAGINA */
+footer {
+    background: #451321;
+    color: white;
+    padding: 30px 10%;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 7px 0;
+    color: #EBDDE0;
+}
+
+/* SELECCION DE TEXTO */
+::selection {
+    background: #8A263D;
+    color: white;
+}
+
+/* TABLETAS */
+@media (max-width: 992px) {
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .contenido-inicio h1 {
+        font-size: 38px;
+    }
+
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .logo h2 {
+        font-size: 19px;
+    }
+
+    nav {
+        gap: 12px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .inicio {
+        min-height: 400px;
+        padding: 60px 7%;
+    }
+
+    .contenido-inicio h1 {
+        font-size: 32px;
+    }
+
+    .contenido-inicio p {
+        font-size: 16px;
+    }
+
+    .introduccion,
+    .tipos,
+    .prevencion,
+    .transporte {
+        padding: 55px 6%;
+    }
+
+    .introduccion h2,
+    .tipos h2,
+    .prevencion h2,
+    .transporte h2 {
+        font-size: 25px;
+    }
+
+    .tarjeta,
+    .consejo,
+    .transporte-contenido div {
+        padding: 23px;
+    }
+
+    .mensaje-final {
+        padding: 55px 7%;
+    }
+
+    .mensaje-final h2 {
+        font-size: 24px;
+    }
+
+    footer {
+        padding: 25px 6%;
+    }
+
+}
