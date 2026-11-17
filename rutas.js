@@ -13,7 +13,7 @@ const rutas = [
         nombre: "Centro - Zona Plateada",
 
         descripcion:
-            "Recorrido de demostración por algunas zonas de Pachuca.",
+            "Recorrido de por algunas zonas de Pachuca.",
 
         paradas: [
             "centro",
@@ -28,7 +28,7 @@ const rutas = [
         nombre: "Central - Hospital General",
 
         descripcion:
-            "Recorrido de demostración entre la Central y el Hospital General.",
+            "Recorrido entre la Central y el Hospital General.",
 
         paradas: [
             "central",
@@ -44,7 +44,7 @@ const rutas = [
         nombre: "Zona Plateada - Central",
 
         descripcion:
-            "Recorrido de demostración por la zona comercial y el centro.",
+            "Recorrido por la zona comercial y el centro.",
 
         paradas: [
             "plateada",
@@ -522,7 +522,7 @@ function crearTarjetaDirecta(resultado) {
         <article class="tarjeta-resultado">
 
             <span class="tipo-ruta">
-                RUTA DIRECTA · DEMOSTRACIÓN
+                RUTA DIRECTA 
             </span>
 
             <h3>${ruta.id} - ${ruta.nombre}</h3>
@@ -581,7 +581,7 @@ function crearTarjetaTransbordo(resultado) {
         <article class="tarjeta-resultado">
 
             <span class="tipo-ruta">
-                RUTA CON TRANSBORDO · DEMOSTRACIÓN
+                RUTA CON TRANSBORDO 
             </span>
 
             <h3>
