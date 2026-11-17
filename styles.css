@@ -792,3 +792,18 @@ footer button:hover{
 
 
 }
+
+.boton-perfil {
+    display: inline-block;
+    background: #6b1025;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton-perfil:hover {
+    background: #4e0b1b;
+}
