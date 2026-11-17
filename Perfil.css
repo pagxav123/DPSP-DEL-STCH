@@ -1,0 +1,102 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    color: #333;
+}
+
+.encabezado {
+    background: #6b1025;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.encabezado img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.encabezado h1 {
+    font-size: 28px;
+}
+
+.encabezado p {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+.perfil {
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+}
+
+.perfil h2 {
+    color: #6b1025;
+    margin-bottom: 8px;
+}
+
+.descripcion {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.informacion {
+    display: grid;
+    gap: 18px;
+}
+
+.dato {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 12px;
+}
+
+.dato label {
+    font-weight: bold;
+    color: #6b1025;
+}
+
+.dato p {
+    margin-top: 7px;
+}
+
+#cerrarSesion {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #6b1025;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#cerrarSesion:hover {
+    background: #4e0b1b;
+}
+
+#mensaje {
+    margin-top: 15px;
+    text-align: center;
+    color: red;
+}
