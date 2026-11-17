@@ -9,7 +9,7 @@
 const rutas = [
 
     {
-        id: "DEMO 01",
+        id: "RUTA 01",
         nombre: "Centro - Zona Plateada",
 
         descripcion:
@@ -24,7 +24,7 @@ const rutas = [
     },
 
     {
-        id: "DEMO 02",
+        id: "RUTA 02",
         nombre: "Central - Hospital General",
 
         descripcion:
@@ -40,7 +40,7 @@ const rutas = [
     },
 
     {
-        id: "DEMO 03",
+        id: "RUTA 03",
         nombre: "Zona Plateada - Central",
 
         descripcion:
