@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STCH - Mi perfil</title>
+
+    <link rel="stylesheet" href="Perfil.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <img src="logo.png" alt="Logo STCH">
+
+        <div>
+            <h1>STCH</h1>
+            <p>Sistema de Transporte Convencional de Hidalgo</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="perfil">
+
+            <h2>Mi perfil</h2>
+            <p class="descripcion">
+                Consulta tu información personal.
+            </p>
+
+            <div class="informacion">
+
+                <div class="dato">
+                    <label>Nombre:</label>
+                    <p id="nombre">Cargando...</p>
+                </div>
+
+                <div class="dato">
+                    <label>Apellidos:</label>
+                    <p id="apellidos">Cargando...</p>
+                </div>
+
+                <div class="dato">
+                    <label>Nombre de usuario:</label>
+                    <p id="usuario">Cargando...</p>
+                </div>
+
+                <div class="dato">
+                    <label>Correo electrónico:</label>
+                    <p id="correo">Cargando...</p>
+                </div>
+
+                <div class="dato">
+                    <label>Fecha de registro:</label>
+                    <p id="fecha">Cargando...</p>
+                </div>
+
+            </div>
+
+            <p id="mensaje"></p>
+
+            <button id="cerrarSesion">
+                Cerrar sesión
+            </button>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="Perfil.js"></script>
+
+</body>
+</html>
