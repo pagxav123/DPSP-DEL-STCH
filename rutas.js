@@ -351,74 +351,76 @@ async function cargarTarifas() {
    CALCULAR Y MOSTRAR TARIFAS
 ================================= */
 
+
 function crearResumenTarifa(numeroCombis) {
 
     const tarifaGeneral = tarifas.find(function(tarifa) {
-
         return tarifa.tipo_usuario === "General";
-
     });
 
     const tarifaAdulto = tarifas.find(function(tarifa) {
-
         return tarifa.tipo_usuario === "Adulto mayor";
-
     });
 
     if (!tarifaGeneral || !tarifaAdulto) {
-
         return `
             <div class="tarifa-ruta">
-
                 <h4>Tarifa del recorrido</h4>
-
-                <p>
-                    No fue posible consultar los precios.
-                </p>
-
+                <p>No fue posible consultar los precios.</p>
             </div>
         `;
-
     }
 
-    const totalGeneral =
-        Number(tarifaGeneral.precio) * numeroCombis;
-
-    const totalAdulto =
-        Number(tarifaAdulto.precio) * numeroCombis;
+    const totalGeneral = Number(tarifaGeneral.precio) * numeroCombis;
+    const totalAdulto = Number(tarifaAdulto.precio) * numeroCombis;
 
     return `
-
         <div class="tarifa-ruta">
 
-            <h4>Tarifa del recorrido</h4>
+            <div class="encabezado-tarifa">
+                <div>
+                    <span class="subtitulo-tarifa">COSTO DEL VIAJE</span>
+                    <h4>Tarifa del recorrido</h4>
+                </div>
+                <span class="cantidad-combis">
+                    ${numeroCombis} ${numeroCombis === 1 ? "combi" : "combis"}
+                </span>
+            </div>
 
-            <p>
-                <strong>Combis necesarias:</strong>
-                ${numeroCombis}
-            </p>
+            <div class="opciones-tarifa">
 
-            <p>
-                <strong>Público general:</strong>
-                ${totalGeneral.toLocaleString("es-MX", {
-                    style: "currency",
-                    currency: "MXN"
-                })}
-            </p>
+                <div class="precio-general">
+                    <span class="tipo-usuario">Público general</span>
+                    <strong>
+                        ${totalGeneral.toLocaleString("es-MX", {
+                            style: "currency",
+                            currency: "MXN"
+                        })}
+                    </strong>
+                    <small>$12 por combi</small>
+                </div>
 
-            <p>
-                <strong>Adultos mayores:</strong>
-                ${totalAdulto.toLocaleString("es-MX", {
-                    style: "currency",
-                    currency: "MXN"
-                })}
+                <div class="precio-adulto">
+                    <span class="tipo-usuario">Adulto mayor</span>
+                    <strong>
+                        ${totalAdulto.toLocaleString("es-MX", {
+                            style: "currency",
+                            currency: "MXN"
+                        })}
+                    </strong>
+                    <small>$6 por combi</small>
+                </div>
+
+            </div>
+
+            <p class="nota-tarifa">
+                El costo total depende del número de combis necesarias para completar el recorrido.
             </p>
 
         </div>
-
     `;
-
 }
+
 
 
 /* =================================
