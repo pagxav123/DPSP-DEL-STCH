@@ -710,106 +710,110 @@ footer {
 /* ==========================
    TARIFAS DEL TRANSPORTE
 ========================== */
-
 .tarifa-ruta {
-    margin-top: 22px;
-    padding: 22px;
-    background: #faf7f8;
-    border: 1px solid #ead9df;
-    border-radius: 12px;
+    margin-top: 25px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e6d5dc;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(105, 27, 49, 0.06);
 }
 
-.tarifa-ruta h4 {
+.encabezado-tarifa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.encabezado-tarifa h4 {
     color: #691b31;
-    font-size: 18px;
-    margin-bottom: 6px;
+    font-size: 20px;
+    margin-top: 5px;
 }
 
-.tarifa-ruta p {
-    color: #697180;
-    font-size: 13px;
-    margin-bottom: 16px;
-    line-height: 1.5;
+.subtitulo-tarifa {
+    color: #a02142;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-/* Contenedor de precios */
-
-.tarifa-ruta > div {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-/* Tarjetas de cada tipo de usuario */
-
-.tarifa-ruta .precio-general,
-.tarifa-ruta .precio-adulto {
-    background: white;
-    padding: 18px;
-    border-radius: 10px;
-    border: 1px solid #e5e5e5;
-    text-align: center;
-}
-
-/* Etiquetas */
-
-.tarifa-ruta .precio-general strong,
-.tarifa-ruta .precio-adulto strong {
-    display: block;
-    color: #691b31;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-/* Cantidades */
-
-.tarifa-ruta .precio-general span,
-.tarifa-ruta .precio-adulto span {
-    display: block;
+.cantidad-combis {
+    background: #f4e7ec;
     color: #7b1735;
-    font-size: 28px;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-/* Diferenciar tarifa de adulto mayor */
-
-.tarifa-ruta .precio-adulto {
-    background: #f4f8f4;
-    border-color: #cddfcf;
+.opciones-tarifa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
-.tarifa-ruta .precio-adulto strong {
+.precio-general,
+.precio-adulto {
+    padding: 22px 15px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.precio-general {
+    background: #f8edf1;
+    border: 1px solid #ead0d9;
+}
+
+.precio-adulto {
+    background: #edf5ef;
+    border: 1px solid #cfe0d2;
+}
+
+.tipo-usuario {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.precio-general strong {
+    font-size: 30px;
+    color: #7b1735;
+}
+
+.precio-adulto strong {
+    font-size: 30px;
     color: #376b43;
 }
 
-.tarifa-ruta .precio-adulto span {
-    color: #376b43;
-}
-
-/* Nota informativa */
-
-.tarifa-ruta .nota-tarifa {
-    margin-top: 15px;
-    margin-bottom: 0;
-    padding-top: 12px;
-    border-top: 1px solid #e5dce0;
+.precio-general small,
+.precio-adulto small {
     font-size: 12px;
     color: #697180;
 }
 
-/* Adaptación para celulares */
+.nota-tarifa {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+    color: #697180;
+    font-size: 12px;
+    line-height: 1.6;
+}
 
 @media(max-width: 650px) {
-
-    .tarifa-ruta {
-        padding: 16px;
-    }
-
-    .tarifa-ruta > div {
+    .opciones-tarifa {
         grid-template-columns: 1fr;
     }
 
+    .encabezado-tarifa {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
-
-
 
