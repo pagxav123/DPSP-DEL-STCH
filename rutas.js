@@ -5,18 +5,12 @@ import { supabase } from "./Conexión.js";
    DATOS DE DEMOSTRACION
 ================================= */
 
-// Estos recorridos son ficticios.
-// No representan rutas oficiales.
-
 const rutas = [
 
     {
         id: "RUTA 01",
         nombre: "Centro - Zona Plateada",
-
-        descripcion:
-            "Recorrido de por algunas zonas de Pachuca.",
-
+        descripcion: "Recorrido por algunas zonas de Pachuca.",
         paradas: [
             "centro",
             "plaza",
@@ -28,10 +22,7 @@ const rutas = [
     {
         id: "RUTA 02",
         nombre: "Central - Hospital General",
-
-        descripcion:
-            "Recorrido entre la Central y el Hospital General.",
-
+        descripcion: "Recorrido entre la Central y el Hospital General.",
         paradas: [
             "central",
             "mercado",
@@ -44,10 +35,7 @@ const rutas = [
     {
         id: "RUTA 03",
         nombre: "Zona Plateada - Central",
-
-        descripcion:
-            "Recorrido por la zona comercial y el centro.",
-
+        descripcion: "Recorrido por la zona comercial y el centro.",
         paradas: [
             "plateada",
             "plaza",
@@ -67,19 +55,12 @@ const rutas = [
 const nombresParadas = {
 
     centro: "Centro de Pachuca",
-
     central: "Central de Autobuses",
-
     plaza: "Plaza Juárez",
-
     plateada: "Zona Plateada",
-
     hospital: "Hospital General",
-
     "san-javier": "San Javier",
-
     mercado: "Mercado Benito Juárez",
-
     parque: "Parque David Ben Gurión"
 
 };
@@ -92,19 +73,12 @@ const nombresParadas = {
 const coordenadas = {
 
     centro: [20.1250, -98.7330],
-
     central: [20.1050, -98.7470],
-
     plaza: [20.1230, -98.7400],
-
     plateada: [20.1020, -98.7500],
-
     hospital: [20.1050, -98.7560],
-
     "san-javier": [20.1150, -98.7460],
-
     mercado: [20.1230, -98.7380],
-
     parque: [20.0910, -98.7480]
 
 };
@@ -117,7 +91,6 @@ const coordenadas = {
 let mapa = null;
 
 let capasMapa = [];
-
 
 function iniciarMapa() {
 
@@ -148,9 +121,7 @@ function iniciarMapa() {
 function limpiarMapa() {
 
     capasMapa.forEach(function(capa) {
-
         mapa.removeLayer(capa);
-
     });
 
     capasMapa = [];
@@ -196,9 +167,7 @@ function agregarMarcador(parada, tipo) {
 function dibujarTramo(paradas, color) {
 
     const puntos = paradas.map(function(parada) {
-
         return coordenadas[parada];
-
     });
 
     const linea = L.polyline(
@@ -348,88 +317,268 @@ async function cargarTarifas() {
 
 
 /* =================================
-   CALCULAR Y MOSTRAR TARIFAS
+   CONSULTAR HORARIOS EN SUPABASE
 ================================= */
 
+let horarios = [];
+
+async function cargarHorarios() {
+
+    const { data, error } = await supabase
+        .from("horario")
+        .select("id_ruta, hora_inicio, hora_fin, dias_servicio");
+
+    if (error) {
+
+        console.error("Error al consultar horarios:", error);
+
+        horarios = [];
+
+        return false;
+
+    }
+
+    horarios = data || [];
+
+    return true;
+
+}
+
+
+/* =================================
+   FORMATEAR HORAS
+================================= */
+
+function formatearHora(horaTexto) {
+
+    if (!horaTexto) {
+        return "No disponible";
+    }
+
+    const partes = horaTexto.split(":");
+
+    const hora = Number(partes[0]);
+
+    const minutos = Number(partes[1] || 0);
+
+    const periodo = hora >= 12 ? "p. m." : "a. m.";
+
+    const hora12 = hora % 12 || 12;
+
+    return `${hora12}:${String(minutos).padStart(2, "0")} ${periodo}`;
+
+}
+
+
+/* =================================
+   MOSTRAR HORARIO DE UNA RUTA
+================================= */
+
+function crearResumenHorario(idRuta) {
+
+    const horario = horarios.find(function(item) {
+
+        return item.id_ruta === idRuta;
+
+    });
+
+    if (!horario) {
+
+        return `
+            <div class="horario-ruta">
+
+                <h4>Horario de servicio</h4>
+
+                <p>
+                    No hay información de horarios disponible
+                    para esta ruta.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+    const horaInicio = formatearHora(horario.hora_inicio);
+
+    const horaFin = formatearHora(horario.hora_fin);
+
+    const dias = Array.isArray(horario.dias_servicio)
+        ? horario.dias_servicio.join(", ")
+        : "No disponibles";
+
+    return `
+
+        <div class="horario-ruta">
+
+            <div class="encabezado-horario">
+
+                <div>
+                    <span class="subtitulo-horario">
+                        HORARIO DE SERVICIO
+                    </span>
+
+                    <h4>${idRuta}</h4>
+                </div>
+
+                <span class="etiqueta-horario">
+                    <span class="punto-horario"></span>
+                    Estimado
+                </span>
+
+            </div>
+
+            <div class="horas-servicio">
+
+                <div class="hora-inicio">
+
+                    <span>Inicio del servicio</span>
+
+                    <strong>${horaInicio}</strong>
+
+                </div>
+
+                <div class="hora-fin">
+
+                    <span>Fin del servicio</span>
+
+                    <strong>${horaFin}</strong>
+
+                </div>
+
+            </div>
+
+            <div class="dias-servicio">
+
+                <strong>Días de operación</strong>
+
+                <p>${dias}</p>
+
+            </div>
+
+            <p class="nota-horario">
+
+                Los horarios son aproximados y pueden variar
+                dependiendo de las condiciones del servicio.
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =================================
+   CALCULAR Y MOSTRAR TARIFAS
+================================= */
 
 function crearResumenTarifa(numeroCombis) {
 
     const tarifaGeneral = tarifas.find(function(tarifa) {
+
         return tarifa.tipo_usuario === "General";
+
     });
 
     const tarifaAdulto = tarifas.find(function(tarifa) {
+
         return tarifa.tipo_usuario === "Adulto mayor";
+
     });
 
     if (!tarifaGeneral || !tarifaAdulto) {
+
         return `
             <div class="tarifa-ruta">
                 <h4>Tarifa del recorrido</h4>
                 <p>No fue posible consultar los precios.</p>
             </div>
         `;
+
     }
 
-    const totalGeneral = Number(tarifaGeneral.precio) * numeroCombis;
-    const totalAdulto = Number(tarifaAdulto.precio) * numeroCombis;
+    const totalGeneral =
+        Number(tarifaGeneral.precio) * numeroCombis;
+
+    const totalAdulto =
+        Number(tarifaAdulto.precio) * numeroCombis;
 
     return `
+
         <div class="tarifa-ruta">
 
             <div class="encabezado-tarifa">
+
                 <div>
-                    <span class="subtitulo-tarifa">COSTO DEL VIAJE</span>
+                    <span class="subtitulo-tarifa">
+                        COSTO DEL VIAJE
+                    </span>
+
                     <h4>Tarifa del recorrido</h4>
                 </div>
+
                 <span class="cantidad-combis">
-                    ${numeroCombis} ${numeroCombis === 1 ? "combi" : "combis"}
+                    ${numeroCombis}
+                    ${numeroCombis === 1 ? "combi" : "combis"}
                 </span>
+
             </div>
 
             <div class="opciones-tarifa">
 
                 <div class="precio-general">
-                    <span class="tipo-usuario">Público general</span>
+
+                    <span class="tipo-usuario">
+                        Público general
+                    </span>
+
                     <strong>
                         ${totalGeneral.toLocaleString("es-MX", {
                             style: "currency",
                             currency: "MXN"
                         })}
                     </strong>
+
                     <small>$12 por combi</small>
+
                 </div>
 
                 <div class="precio-adulto">
-                    <span class="tipo-usuario">Adulto mayor</span>
+
+                    <span class="tipo-usuario">
+                        Adulto mayor
+                    </span>
+
                     <strong>
                         ${totalAdulto.toLocaleString("es-MX", {
                             style: "currency",
                             currency: "MXN"
                         })}
                     </strong>
+
                     <small>$6 por combi</small>
+
                 </div>
 
             </div>
 
             <p class="nota-tarifa">
-                El costo total depende del número de combis necesarias para completar el recorrido.
+                El costo total depende del número de combis
+                necesarias para completar el recorrido.
             </p>
 
         </div>
-    `;
-}
 
+    `;
+
+}
 
 
 /* =================================
    OBTENER RECORRIDO
 ================================= */
-
-// Comprueba si una ruta conecta dos paradas.
-// En esta demostración los recorridos son
-// bidireccionales.
 
 function obtenerTramo(ruta, puntoInicial, puntoFinal) {
 
@@ -508,7 +657,9 @@ function buscarTransbordos(puntoInicial, puntoFinal) {
         const primerRecorrido = obtenerTramo(
             primeraRuta,
             puntoInicial,
-            primeraRuta.paradas[primeraRuta.paradas.length - 1]
+            primeraRuta.paradas[
+                primeraRuta.paradas.length - 1
+            ]
         );
 
         if (!primerRecorrido) return;
@@ -518,8 +669,6 @@ function buscarTransbordos(puntoInicial, puntoFinal) {
             if (primeraRuta.id === segundaRuta.id) {
                 return;
             }
-
-            // Buscar una parada compartida.
 
             const paradasCompartidas = primeraRuta.paradas.filter(
                 function(parada) {
@@ -667,6 +816,8 @@ function crearTarjetaDirecta(resultado) {
 
             </div>
 
+            ${crearResumenHorario(ruta.id)}
+
             ${crearResumenTarifa(1)}
 
         </article>
@@ -697,12 +848,9 @@ function crearTarjetaTransbordo(resultado) {
             </h3>
 
             <p class="descripcion-ruta">
-
                 Necesitas utilizar dos recorridos
                 para llegar a tu destino.
-
             </p>
-
 
             <div class="tramo">
 
@@ -713,21 +861,19 @@ function crearTarjetaTransbordo(resultado) {
 
                 ${crearListaParadas(resultado.primerTramo)}
 
-            </div>
+                ${crearResumenHorario(resultado.primeraRuta.id)}
 
+            </div>
 
             <div class="transbordo">
 
                 <strong>🔄 Realizar transbordo</strong>
 
                 <p>
-
                     Baja de la primera combi en:
-
                     <strong>
                         ${nombresParadas[resultado.transbordo]}
                     </strong>
-
                 </p>
 
                 <p>
@@ -737,7 +883,6 @@ function crearTarjetaTransbordo(resultado) {
 
             </div>
 
-
             <div class="tramo">
 
                 <h4>
@@ -746,6 +891,8 @@ function crearTarjetaTransbordo(resultado) {
                 </h4>
 
                 ${crearListaParadas(resultado.segundoTramo)}
+
+                ${crearResumenHorario(resultado.segundaRuta.id)}
 
             </div>
 
@@ -770,9 +917,6 @@ formulario.addEventListener("submit", async function(event) {
 
     const puntoFinal = destino.value;
 
-
-    // Comprobar que no sean iguales.
-
     if (puntoInicial === puntoFinal) {
 
         alert("El origen y el destino no pueden ser iguales.");
@@ -781,10 +925,15 @@ formulario.addEventListener("submit", async function(event) {
 
     }
 
+    // Consultar tarifas y horarios.
 
-    // Consultar tarifas antes de mostrar resultados.
+    const [tarifasDisponibles] = await Promise.all([
 
-    const tarifasDisponibles = await cargarTarifas();
+        cargarTarifas(),
+
+        cargarHorarios()
+
+    ]);
 
     if (!tarifasDisponibles) {
 
@@ -794,7 +943,6 @@ formulario.addEventListener("submit", async function(event) {
 
     }
 
-
     // Buscar recorridos directos.
 
     const directas = buscarRutasDirectas(
@@ -802,18 +950,13 @@ formulario.addEventListener("submit", async function(event) {
         puntoFinal
     );
 
-
-    // Limpiar resultados anteriores.
-
     listaResultados.innerHTML = "";
-
 
     if (directas.length > 0) {
 
         resumenBusqueda.textContent =
             "Encontramos " + directas.length +
             " opción(es) de ruta directa.";
-
 
         directas.forEach(function(resultado) {
 
@@ -822,30 +965,20 @@ formulario.addEventListener("submit", async function(event) {
 
         });
 
-
-        // Mostrar el mapa de la ruta directa.
-
         mostrarMapaDirecto(directas[0].recorrido);
 
     } else {
-
-        // Si no hay rutas directas,
-        // buscar opciones con transbordo.
 
         const transbordos = buscarTransbordos(
             puntoInicial,
             puntoFinal
         );
 
-
         if (transbordos.length > 0) {
 
             resumenBusqueda.textContent =
                 "No encontramos una ruta directa. " +
                 "Estas son las alternativas con transbordo.";
-
-
-            // Mostrar máximo tres alternativas.
 
             transbordos.slice(0, 3).forEach(function(resultado) {
 
@@ -854,16 +987,12 @@ formulario.addEventListener("submit", async function(event) {
 
             });
 
-
-            // Mostrar el mapa del primer transbordo.
-
             mostrarMapaTransbordo(transbordos[0]);
 
         } else {
 
             resumenBusqueda.textContent =
                 "No se encontraron recorridos disponibles.";
-
 
             listaResultados.innerHTML = `
 
@@ -888,13 +1017,7 @@ formulario.addEventListener("submit", async function(event) {
 
     }
 
-
-    // Mostrar sección de resultados.
-
     resultados.hidden = false;
-
-
-    // Actualizar el tamaño del mapa cuando ya sea visible.
 
     if (mapa !== null) {
 
@@ -905,7 +1028,6 @@ formulario.addEventListener("submit", async function(event) {
         }, 200);
 
     }
-
 
     resultados.scrollIntoView({
 
