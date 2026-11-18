@@ -1,4 +1,6 @@
 
+import { supabase } from "./Conexión.js";
+
 /* =================================
    DATOS DE DEMOSTRACION
 ================================= */
@@ -297,8 +299,6 @@ function mostrarMapaTransbordo(resultado) {
 }
 
 
-
-
 /* =================================
    ELEMENTOS HTML
 ================================= */
@@ -316,6 +316,109 @@ const listaResultados = document.getElementById("listaResultados");
 const resumenBusqueda = document.getElementById("resumenBusqueda");
 
 const catalogoRutas = document.getElementById("catalogoRutas");
+
+
+/* =================================
+   CONSULTAR TARIFAS EN SUPABASE
+================================= */
+
+let tarifas = [];
+
+async function cargarTarifas() {
+
+    const { data, error } = await supabase
+        .from("tarifa")
+        .select("tipo_usuario, precio");
+
+    if (error) {
+
+        console.error("Error al consultar tarifas:", error);
+
+        tarifas = [];
+
+        return false;
+
+    }
+
+    tarifas = data || [];
+
+    return true;
+
+}
+
+
+/* =================================
+   CALCULAR Y MOSTRAR TARIFAS
+================================= */
+
+function crearResumenTarifa(numeroCombis) {
+
+    const tarifaGeneral = tarifas.find(function(tarifa) {
+
+        return tarifa.tipo_usuario === "General";
+
+    });
+
+    const tarifaAdulto = tarifas.find(function(tarifa) {
+
+        return tarifa.tipo_usuario === "Adulto mayor";
+
+    });
+
+    if (!tarifaGeneral || !tarifaAdulto) {
+
+        return `
+            <div class="tarifa-ruta">
+
+                <h4>Tarifa del recorrido</h4>
+
+                <p>
+                    No fue posible consultar los precios.
+                </p>
+
+            </div>
+        `;
+
+    }
+
+    const totalGeneral =
+        Number(tarifaGeneral.precio) * numeroCombis;
+
+    const totalAdulto =
+        Number(tarifaAdulto.precio) * numeroCombis;
+
+    return `
+
+        <div class="tarifa-ruta">
+
+            <h4>Tarifa del recorrido</h4>
+
+            <p>
+                <strong>Combis necesarias:</strong>
+                ${numeroCombis}
+            </p>
+
+            <p>
+                <strong>Público general:</strong>
+                ${totalGeneral.toLocaleString("es-MX", {
+                    style: "currency",
+                    currency: "MXN"
+                })}
+            </p>
+
+            <p>
+                <strong>Adultos mayores:</strong>
+                ${totalAdulto.toLocaleString("es-MX", {
+                    style: "currency",
+                    currency: "MXN"
+                })}
+            </p>
+
+        </div>
+
+    `;
+
+}
 
 
 /* =================================
@@ -388,7 +491,6 @@ function buscarRutasDirectas(puntoInicial, puntoFinal) {
     return resultadosDirectos;
 
 }
-
 
 
 /* =================================
@@ -522,7 +624,7 @@ function crearTarjetaDirecta(resultado) {
         <article class="tarjeta-resultado">
 
             <span class="tipo-ruta">
-                RUTA DIRECTA 
+                RUTA DIRECTA
             </span>
 
             <h3>${ruta.id} - ${ruta.nombre}</h3>
@@ -563,6 +665,8 @@ function crearTarjetaDirecta(resultado) {
 
             </div>
 
+            ${crearResumenTarifa(1)}
+
         </article>
 
     `;
@@ -581,12 +685,12 @@ function crearTarjetaTransbordo(resultado) {
         <article class="tarjeta-resultado">
 
             <span class="tipo-ruta">
-                RUTA CON TRANSBORDO 
+                RUTA CON TRANSBORDO
             </span>
 
             <h3>
                 ${resultado.primeraRuta.id}
-                + 
+                +
                 ${resultado.segundaRuta.id}
             </h3>
 
@@ -643,6 +747,8 @@ function crearTarjetaTransbordo(resultado) {
 
             </div>
 
+            ${crearResumenTarifa(2)}
+
         </article>
 
     `;
@@ -654,7 +760,7 @@ function crearTarjetaTransbordo(resultado) {
    REALIZAR BUSQUEDA
 ================================= */
 
-formulario.addEventListener("submit", function(event) {
+formulario.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
@@ -674,13 +780,25 @@ formulario.addEventListener("submit", function(event) {
     }
 
 
-    // Buscar recorridos directos.
-   const directas = buscarRutasDirectas(
-    puntoInicial,
-    puntoFinal
-);
+    // Consultar tarifas antes de mostrar resultados.
 
-       
+    const tarifasDisponibles = await cargarTarifas();
+
+    if (!tarifasDisponibles) {
+
+        alert("No se pudieron consultar las tarifas. Intenta nuevamente.");
+
+        return;
+
+    }
+
+
+    // Buscar recorridos directos.
+
+    const directas = buscarRutasDirectas(
+        puntoInicial,
+        puntoFinal
+    );
 
 
     // Limpiar resultados anteriores.
@@ -702,8 +820,10 @@ formulario.addEventListener("submit", function(event) {
 
         });
 
-       // Mostrar el mapa de la ruta directa.
-mostrarMapaDirecto(directas[0].recorrido);
+
+        // Mostrar el mapa de la ruta directa.
+
+        mostrarMapaDirecto(directas[0].recorrido);
 
     } else {
 
@@ -732,8 +852,10 @@ mostrarMapaDirecto(directas[0].recorrido);
 
             });
 
-           // Mostrar el mapa del primer transbordo.
-mostrarMapaTransbordo(transbordos[0]);
+
+            // Mostrar el mapa del primer transbordo.
+
+            mostrarMapaTransbordo(transbordos[0]);
 
         } else {
 
@@ -767,25 +889,31 @@ mostrarMapaTransbordo(transbordos[0]);
 
     // Mostrar sección de resultados.
 
-    // Mostrar sección de resultados.
-
-resultados.hidden = false;
-
-// Actualizar el tamaño del mapa cuando ya sea visible.
-if (mapa !== null) {
-    setTimeout(function() {
-        mapa.invalidateSize();
-    }, 200);
-}
+    resultados.hidden = false;
 
 
-resultados.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+    // Actualizar el tamaño del mapa cuando ya sea visible.
+
+    if (mapa !== null) {
+
+        setTimeout(function() {
+
+            mapa.invalidateSize();
+
+        }, 200);
+
+    }
+
+
+    resultados.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
 });
-
-});
-
 
 
 /* =================================
@@ -838,4 +966,3 @@ function mostrarCatalogo() {
 // Ejecutar el catálogo al cargar la página.
 
 mostrarCatalogo();
-
