@@ -707,3 +707,109 @@ footer {
 }
 
 
+/* ==========================
+   TARIFAS DEL TRANSPORTE
+========================== */
+
+.tarifa-ruta {
+    margin-top: 22px;
+    padding: 22px;
+    background: #faf7f8;
+    border: 1px solid #ead9df;
+    border-radius: 12px;
+}
+
+.tarifa-ruta h4 {
+    color: #691b31;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.tarifa-ruta p {
+    color: #697180;
+    font-size: 13px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Contenedor de precios */
+
+.tarifa-ruta > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Tarjetas de cada tipo de usuario */
+
+.tarifa-ruta .precio-general,
+.tarifa-ruta .precio-adulto {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+/* Etiquetas */
+
+.tarifa-ruta .precio-general strong,
+.tarifa-ruta .precio-adulto strong {
+    display: block;
+    color: #691b31;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Cantidades */
+
+.tarifa-ruta .precio-general span,
+.tarifa-ruta .precio-adulto span {
+    display: block;
+    color: #7b1735;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Diferenciar tarifa de adulto mayor */
+
+.tarifa-ruta .precio-adulto {
+    background: #f4f8f4;
+    border-color: #cddfcf;
+}
+
+.tarifa-ruta .precio-adulto strong {
+    color: #376b43;
+}
+
+.tarifa-ruta .precio-adulto span {
+    color: #376b43;
+}
+
+/* Nota informativa */
+
+.tarifa-ruta .nota-tarifa {
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-top: 12px;
+    border-top: 1px solid #e5dce0;
+    font-size: 12px;
+    color: #697180;
+}
+
+/* Adaptación para celulares */
+
+@media(max-width: 650px) {
+
+    .tarifa-ruta {
+        padding: 16px;
+    }
+
+    .tarifa-ruta > div {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+
